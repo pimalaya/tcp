@@ -1,0 +1,23 @@
+[package]
+name = "tcp-std"
+description = "Standard, blocking I/O handler for tcp-lib"
+version = "0.1.0"
+authors = ["soywod <clement.douin@posteo.net>"]
+edition = "2021"
+license = "MIT"
+categories = ["api-bindings"]
+keywords = ["tcp", "stream", "std", "read", "write"]
+homepage = "https://pimalaya.org"
+documentation = "https://docs.rs/tcp-std/latest/tcp_std"
+repository = "https://github.com/pimalaya/tcp/tree/master/io/std"
+
+[package.metadata.docs.rs]
+rustdoc-args = ["--cfg", "docsrs"]
+	     
+[dev-dependencies]
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+uuid = { version = "1", features = ["v4"] }
+
+[dependencies]
+tcp-lib = "0.1"
+tracing = "0.1"

@@ -1,0 +1,21 @@
+[package]
+name = "tcp-lib"
+description = "I/O-free library to manage TCP streams"
+version = "0.1.0"
+authors = ["soywod <clement.douin@posteo.net>"]
+edition = "2021"
+license = "MIT"
+categories = []
+keywords = ["tcp", "stream", "io-free", "read", "write"]
+homepage = "https://pimalaya.org"
+documentation = "https://docs.rs/tcp-lib/latest/tcp_lib"
+repository = "https://github.com/pimalaya/tcp/tree/master/lib"
+
+[package.metadata.docs.rs]
+rustdoc-args = ["--cfg", "docsrs"]
+
+[dev-dependencies]
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[dependencies]
+tracing = "0.1"

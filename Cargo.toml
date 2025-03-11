@@ -1,0 +1,7 @@
+[workspace]
+resolver = "2"
+members = ["lib", "io/std"]
+
+[patch.crates-io]
+tcp-lib.path = "./lib"
+tcp-std.path = "./io/std"
