@@ -65,8 +65,8 @@ while let Err(io) = write.resume(arg) {
 
 Have a look at projects built on the top of this library:
 
-- [starttls](https://github.com/pimalaya/starttls): I/O-free coroutine to upgrade any plain stream to a secure one
-- [time](https://github.com/pimalaya/time): Set of I/O-free coroutines to manage timers
+- [io-starttls](https://github.com/pimalaya/io-starttls): I/O-free coroutine to upgrade any plain stream to a secure one
+- [io-timer](https://github.com/pimalaya/io-timer): Set of I/O-free coroutines to manage timers
 - [comodoro](https://github.com/pimalaya/comodoro): CLI to manage timers
 
 ## Sponsoring

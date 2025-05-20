@@ -41,11 +41,11 @@ impl Read {
             Ok(output) => {
                 let n = output.bytes_count;
                 let capacity = output.buffer.capacity();
-                debug!("successfully read chunk of bytes {n}/{capacity}");
+                debug!("resume after {n}/{capacity} bytes read");
                 Ok(output)
             }
             Err(io) => {
-                debug!("need to read chunk of bytes");
+                debug!("break: need I/O to read bytes");
                 Err(Io::Read(Err(io)))
             }
         }

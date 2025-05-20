@@ -2,6 +2,7 @@
 
 use std::io;
 
+use log::debug;
 use tokio::io::{AsyncRead, AsyncReadExt, AsyncWrite, AsyncWriteExt};
 
 use crate::{Io, Output};
@@ -34,12 +35,8 @@ pub async fn read(
         return Err(io::Error::new(kind, "missing read buffer"));
     };
 
+    debug!("read chunk of bytes asynchronously");
     let bytes_count = stream.read(&mut buffer).await?;
-
-    if bytes_count == 0 {
-        let kind = io::ErrorKind::UnexpectedEof;
-        return Err(io::Error::new(kind, "read empty bytes"));
-    }
 
     let output = Output {
         buffer,
@@ -58,12 +55,8 @@ pub async fn write(
         return Err(io::Error::new(kind, "missing write bytes"));
     };
 
+    debug!("write bytes asynchronously");
     let bytes_count = stream.write(&buffer).await?;
-
-    if bytes_count == 0 {
-        let kind = io::ErrorKind::UnexpectedEof;
-        return Err(io::Error::new(kind, "wrote empty bytes"));
-    }
 
     let output = Output {
         buffer,

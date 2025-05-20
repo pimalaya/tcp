@@ -53,11 +53,11 @@ impl Write {
         match output {
             Ok(output) => {
                 let n = output.bytes_count;
-                debug!("successfully wrote {n} bytes");
+                debug!("resume after {n} bytes written");
                 Ok(output)
             }
             Err(io) => {
-                debug!("need to write bytes");
+                debug!("break: need I/O to write bytes");
                 Err(Io::Write(Err(io)))
             }
         }

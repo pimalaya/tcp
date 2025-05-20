@@ -2,6 +2,8 @@
 
 use std::io::{self, Read, Write};
 
+use log::debug;
+
 use crate::{Io, Output};
 
 /// The main runtime I/O handler.
@@ -29,12 +31,8 @@ pub fn read(mut stream: impl Read, input: Result<Output, Vec<u8>>) -> io::Result
         return Err(io::Error::new(kind, "missing read buffer"));
     };
 
+    debug!("read chunk of bytes synchronously");
     let bytes_count = stream.read(&mut buffer)?;
-
-    if bytes_count == 0 {
-        let kind = io::ErrorKind::UnexpectedEof;
-        return Err(io::Error::new(kind, "read empty bytes"));
-    }
 
     let output = Output {
         buffer,
@@ -50,12 +48,8 @@ pub fn write(mut stream: impl Write, input: Result<Output, Vec<u8>>) -> io::Resu
         return Err(io::Error::new(kind, "missing write bytes"));
     };
 
+    debug!("write bytes synchronously");
     let bytes_count = stream.write(&buffer)?;
-
-    if bytes_count == 0 {
-        let kind = io::ErrorKind::UnexpectedEof;
-        return Err(io::Error::new(kind, "wrote empty bytes"));
-    }
 
     let output = Output {
         buffer,
